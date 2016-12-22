@@ -4,7 +4,7 @@ An example for testing packet loss and latency between hosts with TCLink
 #Usage 
 Create network topology in mininet  
 
-        python topo.py  
+        sudo python topo.py  
 
 Testing packet loss and latency between hosts 
 
