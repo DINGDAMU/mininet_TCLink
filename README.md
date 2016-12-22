@@ -1,5 +1,5 @@
 # mininet_TCLink
-An example for testing packet loss and latency between hosts with TCLink
+A mininet example for testing packet loss and latency between hosts in the network by TCLink
 
 #Usage 
 Create network topology in mininet  
