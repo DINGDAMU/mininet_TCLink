@@ -1,7 +1,7 @@
 # mininet_TCLink
 A mininet example for testing packet loss and latency between hosts in the network by TCLink
 
-#Usage 
+# Usage 
 Create network topology in mininet  
 
         sudo python topo.py  
@@ -12,7 +12,7 @@ Testing packet loss and latency between hosts
         h2 ping h3
         ...etc,
 
-#Description
+# Description
         net = Mininet(topo, switch=OVSKernelSwitch, controller=RemoteController, link=TCLink)
 Set link to TCLink so that we can measure the packet loss and latency.  
 
