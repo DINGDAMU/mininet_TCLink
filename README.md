@@ -50,7 +50,7 @@ Set link to TCLink so that we can measure the packet loss and latency.
 **use_htb** = use Hierarchical token bucket  
 The **hierarchical token bucket (HTB)** is a faster replacement for the class-based queueing (CBQ) queuing discipline in Linux. It is useful to limit a client's download/upload rate so that the limited client cannot saturate the total bandwidth.
 
-In my case:    
+
         
         p_loss = (1-Ps)*100 
         
