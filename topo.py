@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from __future__ import division
 from mininet.net import Mininet
 from mininet.topo import Topo
 from mininet.log import setLogLevel
@@ -59,8 +59,8 @@ xsi_n_lin = 7.6
 #xsi_n_lin = 10^(xsi_n/10)
 
 
-#beta_l_n = one_meter_loss #dB
-beta_l_n = 100 #dB
+#beta_l_n = one_meter_loss(alpha) #dB
+beta_l_n = alpha #dB
 beta_l_n_lin = 10**(beta_l_n/10)
 
 # beta_l_lin = beta_l_n_lin
