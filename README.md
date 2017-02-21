@@ -8,8 +8,8 @@ A mininet example for testing packet loss and latency between hosts in the netwo
 ![](http://latex.codecogs.com/gif.latex?\M_a(t) =\\frac{\\Lambda_a(\(0,t\])}{\\lambda})  
 ![](http://latex.codecogs.com/gif.latex?\\Lambda_a(\(0,t\]) = \\lambda \\pi C\\{D^2[ Q(\\frac{\\ln{D^{\\alpha_l}/t}-m_l}{\\sigma_l})-Q(\\frac{\\ln{D^{\\alpha_n}/t}-m_n}{\\sigma_n})]+ t^{2/\\alpha_l}exp(2\\frac{\\sigma_l^2}{\\alpha_l^2}+2\\frac{m_l}{\\alpha_l})Q(\\frac{\\sigma_l^2(2/\\alpha_l)-\\ln{D^{\\alpha_l/t}}+m_l}{\\sigma_l})+t^{2/\\alpha_n}exp(2\\frac{\\sigma_n^2}{\\alpha_n^2}+2\\frac{m_n}{\\alpha_n})[\\frac{1}{C}-Q(\\frac{\\sigma_n^2(2/\\alpha_n)-\\ln{D^{\\alpha_n/t}}+m_n}{\\sigma_n})]\\})  
 
-**Ps**: probability of success
-Λa:denotes the intensity measure for the corresponding Poisson Point Process (PPP) of the mm-Wave links that incur in a path-loss greater than the threshold t when the path-loss distribution is proven to follow an exponential distribution  
+**Ps**: probability of success  
+**Λa**:denotes the intensity measure for the corresponding Poisson Point Process (PPP) of the mm-Wave links that incur in a path-loss greater than the threshold t when the path-loss distribution is proven to follow an exponential distribution  
 **λ** : the density of mm-Wave links  
 **D** : the separating distance between transmitter-receiver pair  
 **C** : the fractional LoS area in the model developed  
