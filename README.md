@@ -25,7 +25,7 @@ where **j** is the model parameter, **j** = l or n
 
 
 # Usage 
-1.Modify the needed parameter in topo.py   
+1.Modify the needed parameter in formula.py, and it can create a JSON file to be adopted in ONOS   
 
 2.Create network topology in mininet   
 
@@ -41,9 +41,9 @@ where **j** is the model parameter, **j** = l or n
         net = Mininet(topo, switch=OVSKernelSwitch, controller=RemoteController, link=TCLink)
 Set link to TCLink so that we can measure the packet loss and latency.  
 
-        self.addLink(s10, h1, bw=20, delay='5ms', loss=p_loss, use_htb=True)  
-        self.addLink(s12, h2, bw=30, delay='5ms', loss=p_loss, use_htb=True)  
-        self.addLink(s11, h3, bw=10, delay='10ms', loss=p_loss, use_htb=True) 
+        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss, use_htb=True)  
+        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss, use_htb=True)  
+        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss, use_htb=True) 
 **bw** = link bandwidth  
 **delay** = packet delay time  
 **loss** = packet loss rate   
@@ -56,4 +56,5 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
         
 **p_loss** must be an integer from 0 to 100
 
+# A json example:  
 
