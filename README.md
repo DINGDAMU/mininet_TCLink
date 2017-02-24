@@ -25,7 +25,7 @@ where **j** is the model parameter, **j** = l or n
 
 
 # Usage 
-1.Modify the needed parameter in formula.py, and it can create a JSON file to be adopted in ONOS   
+1.Modify the needed parameter in formula.py, and it can create a Json file to be adopted in ONOS   
 
 2.Create network topology in mininet   
 
@@ -57,4 +57,26 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
 **p_loss** must be an integer from 0 to 100
 
 # A json example:  
+    {
+     "apps" : {
+    "org.onosproject.millimeterwavelink" : {
+      "links" : [{
+        "src":"of:000000000000000e/5",
+        "dst":"of:000000000000000f/3",
+        "length": "100",
+        "capacity":"100",
+        "technology":"mmwave",
+        "ps": formula.p_loss
+      }]
+    },
+    "org.onosproject.millimeterwaveport" : {
+      "ports" : [{
+        "technology":"mmwave",
+        "deviceID": "of:000000000000000a",
+        "portnumber":"1",
+        "isEnabled":"true"
+      }]
+     }
+    }
+
 
