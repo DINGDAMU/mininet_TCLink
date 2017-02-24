@@ -66,7 +66,7 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
         "length": "100",
         "capacity":"100",
         "technology":"mmwave",
-        "ps": formula.p_loss
+        "ps": 1-formula.p_loss
       }]
     },
     "org.onosproject.millimeterwaveport" : {
