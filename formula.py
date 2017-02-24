@@ -10,7 +10,7 @@
 from __future__ import division
 import math
 import json
-from numpy import *
+import os
 
 pl_model = '28'
 d = 10    #the separating distance between transmitter-receiver pair(m)
@@ -195,6 +195,7 @@ def onosjson():
     fp = open("cfg.json","w")
     fp.write(json.dumps(annotation,sort_keys=True,indent = 2))
     fp.close()
+    os.system("onos-netcfg localhost cfg.json")
 
 if __name__ == '__main__':
     onosjson()

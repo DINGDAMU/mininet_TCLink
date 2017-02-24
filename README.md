@@ -25,7 +25,9 @@ where **j** is the model parameter, **j** = l or n
 
 
 # Usage 
-1.Modify the needed parameter in formula.py, and it can create a Json file to be adopted in ONOS   
+1.Modify the needed parameter in formula.py, and it can create a Json file to be adopted in ONOS automatically    
+
+        sudo python formula.py
 
 2.Create network topology in mininet   
 

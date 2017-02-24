@@ -58,4 +58,3 @@ if __name__ == '__main__':
     # Tell mininet to print useful information
     setLogLevel('info')
     simpleTest()
-    formula.onosjson()
