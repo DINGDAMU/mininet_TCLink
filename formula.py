@@ -13,7 +13,6 @@ import json
 import os
 
 pl_model = '28'
-d = 10    #the separating distance between transmitter-receiver pair(m)
 if cmp(pl_model, '28') == 0:
     alpha = 72.0 #dB
     beta = 2.92
@@ -21,7 +20,8 @@ if cmp(pl_model, '28') == 0:
     sigma_lin = 10**(sigma/10)
     xsi_lin = sigma_lin**2
     xsi = 10*math.log10(xsi_lin)
-    pl = alpha + 10* beta * math.log10(d)
+    def pl(d):
+        return  alpha + 10* beta * math.log10(d)
 elif cmp(pl_model, '73') == 0:
     alpha = 86.6 #dB
     beta = 2.45
@@ -29,10 +29,12 @@ elif cmp(pl_model, '73') == 0:
     sigma_lin = 10**(sigma/10)
     xsi_lin = sigma_lin**2
     xsi = 10*math.log10(xsi_lin)
-    pl = alpha + 10* beta * math.log10(d)
+    def pl(d):
+        return  alpha + 10* beta * math.log10(d)
 elif cmp(pl_model, '3gpp') == 0:
     fc = 2.5
-    pl = 22.7 + 36.7*math.log10(d) + 26*math.log10(fc)
+    def pl(d):
+        return 22.7 + 36.7*math.log10(d) + 26*math.log10(fc)
     beta = 3.67
     alpha=70.0 #22.7 + 26*log10(fc)
 
@@ -40,7 +42,8 @@ elif cmp(pl_model, '3gpp') == 0:
 lamda =100.0 #density of mm-Wave links
 B = 2e9 #mmWave bandwidth
 C = 0.11 #fractional LoS area in the model developed
-D = d
+def D(d):
+    return d
 Gmax = 18.0 #db
 Gmax_lin = 10**(Gmax/10)
 
@@ -51,13 +54,16 @@ pn = -174.0 + 10*(math.log10(B)) + 10 # noise power
 pn_lin = 10 ** (pn/10)
 
 
-pl_lin = 10** (pl/10)
+def pl_lin(d):
+    return  10** (pl(d)/10)
 
 #the unit of pl is dB?
 SNR0 = Pb + Gmax -pn
 SNR_lin = 10 ** (SNR0/10)
-SNR = SNR0 - pl
-SNR_lin = 10**(SNR/10)
+def SNR(d):
+    return  SNR0 - pl(d)
+def SNR_lin(d):
+    return  10**(SNR(d)/10)
 
 
 #xsi corresponding path-loss standard deviation
@@ -88,45 +94,45 @@ tau_lin = 10**(tau/10)
 def q_fun(x):
     return 0.5*math.erfc(x/math.sqrt(2))
 
-def factor():
-    return SNR_lin/tau_lin #((Pb_lin*Gmax_lin)/(pl_lin*pn_lin))
+def factor(d):
+    return SNR_lin(d)/tau_lin #((Pb_lin*Gmax_lin)/(pl_lin*pn_lin))
 
 
-def pc1_q1(sigma_l,ml):
-    return q_fun((math.log(D**beta/factor())-ml)/sigma_l)
+def pc1_q1(d):
+    return q_fun((math.log(D(d)**beta/factor(d))-ml)/sigma_l)
 
-def pc1_q2(sigma_n,mn):
-    return q_fun((math.log(D**pl/factor())-mn)/sigma_n)
+def pc1_q2(d):
+    return q_fun((math.log(D(d)**pl(d)/factor(d))-mn)/sigma_n)
 
-def pc1(sigma_l,ml,sigma_n,mn):
-    return D**2*(pc1_q1(sigma_l,ml)-pc1_q2(sigma_n,mn))
+def pc1(d):
+    return D(d)**2*(pc1_q1(d)-pc1_q2(d))
 
-def pc_c1(sigma,m):
-    return factor()**(2/beta)*math.exp(2*(sigma**2/beta**2)+2*(m/beta))
+def pc_c1(sigma,m,d):
+    return factor(d)**(2/beta)*math.exp(2*(sigma**2/beta**2)+2*(m/beta))
 
-def pc_c2(sigma,m):
-    return q_fun((sigma**2*(2/beta)-math.log(D**beta/factor())+m)/sigma)
+def pc_c2(sigma,m,d):
+    return q_fun((sigma**2*(2/beta)-math.log(D(d)**beta/factor(d))+m)/sigma)
 
-def pc2(sigma_l,ml):
-     return pc_c1(sigma_l,ml)*pc_c2(sigma_l,ml)
+def pc2(d):
+     return pc_c1(sigma_l,ml,d)*pc_c2(sigma_l,ml,d)
 
-def pc3(sigma_n,mn):
-    return pc_c1(sigma_n,mn)*(1/C-pc_c2(sigma_n,mn))
+def pc3(d):
+    return pc_c1(sigma_n,mn,d)*(1/C-pc_c2(sigma_n,mn,d))
 
-def pc(sigma_l,ml,sigma_n,mn):
-    return pc1(sigma_l,ml,sigma_n,mn)+pc2(sigma_l,ml)+pc3(sigma_n,mn)
+def pc(d):
+    return pc1(d)+pc2(d)+pc3(d)
 
-def Lamda_a(sigma_l,ml,sigma_n,mn):
-    return lamda*math.pi*C*pc(sigma_l,ml,sigma_n,mn)
+def Lamda_a(d):
+    return lamda*math.pi*C*pc(d)
 
-def Ma(sigma_l,ml,sigma_n,mn):
-    return Lamda_a(sigma_l,ml,sigma_n,mn)/lamda
+def Ma(d):
+    return Lamda_a(d)/lamda
 
-def ps(sigma_l,ml,sigma_n,mn):
-    return 1-math.exp(-lamda*Ma(sigma_l,ml,sigma_n,mn)*factor())
+def ps(d):
+    return 1-math.exp(-lamda*Ma(d)*factor(d))
 
-p_loss =(1-float(ps(sigma_l,ml,sigma_n,mn)))*100
-
+def p_loss(d):
+    return (1-float(ps(d)))*100
 annotation = {
             "apps":{
                 "org.onosproject.millimeterwavelink":{
@@ -136,7 +142,7 @@ annotation = {
                         "length": "100",
                         "capacity":"200",
                         "technology":"mmwave",
-                        "ps": 100 - p_loss
+                        "ps": 100 - p_loss(10)
                         }]
                     },
                 "org.onosproject.millimeterwaveport":{

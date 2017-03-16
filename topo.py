@@ -23,9 +23,9 @@ class SingleSwitchTopo(Topo):
         h3 = self.addHost( 'h3', ip='10.0.0.3', mac='000000000003')
 
 
-        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss, use_htb=True)
-        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss, use_htb=True)
-        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss, use_htb=True)
+        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss(10), use_htb=True)
+        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss(20), use_htb=True)
+        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss(15), use_htb=True)
 
 
         self.addLink(s10, s13) #sa/2-sd/1
