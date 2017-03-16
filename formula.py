@@ -225,7 +225,7 @@ annotation = {
 
 
 def onosjson():
-    fp = open("cfg2.json", "w")
+    fp = open("cfg.json", "w")
     fp.write(json.dumps(annotation, sort_keys=True, indent=2))
     fp.close()
 
