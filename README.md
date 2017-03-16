@@ -56,7 +56,7 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
         
         p_loss(d) = (1-Ps(d))*100 
         
-**p_loss** must be an integer from 0 to 100
+**p_loss** must be an integer from 0 to 100  
 **d** is the separating distance between transmitter-receiver pair(m)
 
 # A json example:  
