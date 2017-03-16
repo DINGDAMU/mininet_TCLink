@@ -43,9 +43,9 @@ where **j** is the model parameter, **j** = l or n
         net = Mininet(topo, switch=OVSKernelSwitch, controller=RemoteController, link=TCLink)
 Set link to TCLink so that we can measure the packet loss and latency.  
 
-        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss, use_htb=True)  
-        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss, use_htb=True)  
-        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss, use_htb=True) 
+        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss(20), use_htb=True)  
+        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss(10), use_htb=True)  
+        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss(15), use_htb=True) 
 **bw** = link bandwidth  
 **delay** = packet delay time  
 **loss** = packet loss rate   
@@ -54,9 +54,10 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
 
 
         
-        p_loss = (1-Ps)*100 
+        p_loss(d) = (1-Ps(d))*100 
         
 **p_loss** must be an integer from 0 to 100
+**d** is the separating distance between transmitter-receiver pair(m)
 
 # A json example:  
     {
@@ -68,7 +69,7 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
         "length": "100",
         "capacity":"100",
         "technology":"mmwave",
-        "ps": 100-formula.p_loss
+        "ps": 100-p_loss(10)
       }]
     },
     "org.onosproject.millimeterwaveport" : {
