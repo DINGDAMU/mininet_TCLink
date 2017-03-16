@@ -4,9 +4,10 @@ A mininet example for testing packet loss and latency between hosts in the netwo
 
 
 # Probability of success formula  
-![](http://latex.codecogs.com/gif.latex?\p_{ s }=1-exp(- \\lambda M_{ a }(\\frac{P_{b}G_{ max }}{\\tau\\sigma_N^2})))  
-![](http://latex.codecogs.com/gif.latex?\M_a(t) =\\frac{\\Lambda_a(\(0,t\])}{\\lambda})  
-![](http://latex.codecogs.com/gif.latex?\\Lambda_a(\(0,t\]) = \\lambda \\pi C\\{D^2[ Q(\\frac{\\ln{D^{\\alpha_l}/t}-m_l}{\\sigma_l})-Q(\\frac{\\ln{D^{\\alpha_n}/t}-m_n}{\\sigma_n})]+ t^{2/\\alpha_l}exp(2\\frac{\\sigma_l^2}{\\alpha_l^2}+2\\frac{m_l}{\\alpha_l})Q(\\frac{\\sigma_l^2(2/\\alpha_l)-\\ln{D^{\\alpha_l/t}}+m_l}{\\sigma_l})+t^{2/\\alpha_n}exp(2\\frac{\\sigma_n^2}{\\alpha_n^2}+2\\frac{m_n}{\\alpha_n})[\\frac{1}{C}-Q(\\frac{\\sigma_n^2(2/\\alpha_n)-\\ln{D^{\\alpha_n/t}}+m_n}{\\sigma_n})]\\})  
+
+<img src="http://latex.codecogs.com/gif.latex?p_%7B%20s%20%7D=1-exp(-%20%5Clambda%20M_%7B%20a%20%7D(%5Cfrac%7BP_%7Bb%7DG_%7B%20max%20%7D%7D%7B%5Ctau%5Csigma_N%5E2%7D))"/>
+<img src="http://latex.codecogs.com/gif.latex?M_a(t)%20=%5Cfrac%7B%5CLambda_a((0,t%5D)%7D%7B%5Clambda%7D"/>
+<img src="http://latex.codecogs.com/gif.latex?%5CLambda_a((0,t%5D)%20=%20%5Clambda%20%5Cpi%20C%5C%7BD%5E2%5B%20Q(%5Cfrac%7B%5Cln%7BD%5E%7B%5Calpha_l%7D/t%7D-m_l%7D%7B%5Csigma_l%7D)-Q(%5Cfrac%7B%5Cln%7BD%5E%7B%5Calpha_n%7D/t%7D-m_n%7D%7B%5Csigma_n%7D)%5D+%20t%5E%7B2/%5Calpha_l%7Dexp(2%5Cfrac%7B%5Csigma_l%5E2%7D%7B%5Calpha_l%5E2%7D+2%5Cfrac%7Bm_l%7D%7B%5Calpha_l%7D)Q(%5Cfrac%7B%5Csigma_l%5E2(2/%5Calpha_l)-%5Cln%7BD%5E%7B%5Calpha_l/t%7D%7D+m_l%7D%7B%5Csigma_l%7D)+t%5E%7B2/%5Calpha_n%7Dexp(2%5Cfrac%7B%5Csigma_n%5E2%7D%7B%5Calpha_n%5E2%7D+2%5Cfrac%7Bm_n%7D%7B%5Calpha_n%7D)%5B%5Cfrac%7B1%7D%7BC%7D-Q(%5Cfrac%7B%5Csigma_n%5E2(2/%5Calpha_n)-%5Cln%7BD%5E%7B%5Calpha_n/t%7D%7D+m_n%7D%7B%5Csigma_n%7D)%5D%5C%7D"/>
 
 **Ps**: probability of success  
 **Λa**:denotes the intensity measure for the corresponding Poisson Point Process (PPP) of the mm-Wave links that incur in a path-loss greater than the threshold t when the path-loss distribution is proven to follow an exponential distribution  
