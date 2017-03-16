@@ -12,6 +12,7 @@ import math
 import json
 import os
 
+#d is the separating distance between transmitter-receiver pair(m)
 pl_model = '28'
 if cmp(pl_model, '28') == 0:
     alpha = 72.0 #dB
