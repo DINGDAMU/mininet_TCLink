@@ -57,7 +57,6 @@ def simpleTest():
 
     c1 = RemoteController('c1', ip='192.168.56.1')
     net.addController(c1)
-    net.staticArp()
     net.start()
 #    h1,h3=net.get('h1','h3')
 #   net.iperf((h1,h3))
