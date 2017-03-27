@@ -1,3 +1,4 @@
+# !/usr/bin/python
 # -*- coding:utf-8 -*-
 ############################
 # File Name: formula1.py
@@ -10,9 +11,10 @@ from __future__ import division
 import math
 import json
 
-# d is the sep#!/usr/bin/python
 pl_model = '28'
-# d = 10    #the separating distance between transmitter-receiver pair(m)
+d1 = 10    # the separating distance between transmitter-receiver pair(m)
+d2 = 12
+d3 = 15
 if cmp(pl_model, '28') == 0:
     alpha = 72.0   # dB
     beta = 2.92
@@ -162,72 +164,58 @@ annotation = {
             "apps": {
                 "org.onosproject.millimeterwavelink": {
                     "links": [{
-                        "src": "of:000000000000000e/5",
-                        "dst": "of:000000000000000f/3",
-                        "length": "100",
+                        "src": "of:000000000000000b/4",
+                        "dst": "of:000000000000000e/3",
+                        "length": d1,
                         "capacity": "200",
                         "technology": "mmwave",
-                        "ps": 100 - p_loss(10)
+                        "ps": 100 - p_loss(d1)
                         }]
-                    },
-                "org.onosproject.millimeterwaveport": {
-                    "ports": [{
+                    }
+                }
+            }
+
+annotation2 = {
+            "apps": {
+                "org.onosproject.millimeterwavelink": {
+                    "links": [{
+                        "src": "of:000000000000000d/4",
+                        "dst": "of:000000000000000f/4",
+                        "length": d2,
+                        "capacity": "200",
                         "technology": "mmwave",
-                        "deviceID": "of:000000000000000a",
-                        "portnumber": "1",
-                        "isEnabled": "true"
+                        "ps": 100 - p_loss(d2)
                         }]
                     }
-                },
-            "devices": {
-                "of:000000000000000a": {
-                    "basic": {
-                        "allowed": "true",
-                        "owner": "Luigi",
-                        "driver": "softrouter"
-                        }
-                    }
-                },
-            "links": {
-                "of:000000000000000e/5-of:000000000000000f/3": {
-                    "basic": {
-                        "bandwidth": "2000",
-                        "allowed": "true",
-                        "metric": "100",
-                        "latency": "20"
-                        }
-                    }
-                },
-            "hosts": {
-                "00:00:00:00:00:01/None": {
-                    "basic": {
-                        "name": "host1"
-                        }
-                    }
-                },
-            "ports": {
-                "of:000000000000000a/1": {
-                    "interfaces": [
-                        {
-                            "name": "port1"
-                            }
-                        ]
-                },
-                "of:000000000000000b/2": {
-                    "interfaces": [
-                        {
-                            "name": "port2"
-                            }
-                        ]
+                }
+            }
+
+annotation3 = {
+            "apps": {
+                "org.onosproject.millimeterwavelink": {
+                    "links": [{
+                        "src": "of:000000000000000d/3",
+                        "dst": "of:000000000000000e/4",
+                        "length": d3,
+                        "capacity": "200",
+                        "technology": "mmwave",
+                        "ps": 100 - p_loss(d3)
+                        }]
                     }
                 }
             }
 
 
 def onosjson():
-    fp = open("cfg.json", "w")
-    fp.write(json.dumps(annotation, sort_keys=True, indent=2))
-    fp.close()
+    fp1 = open("cfg.json", "w")
+    fp1.write(json.dumps(annotation, indent=4, separators=(',', ': ')))
+    fp1.close()
+    fp2 = open("cfg2.json", "w")
+    fp2.write(json.dumps(annotation2,indent=4, separators=(',', ': ')))
+    fp2.close()
+    fp3 = open("cfg3.json", "w")
+    fp3.write(json.dumps(annotation3,indent=4, separators=(',', ': ')))
+    fp3.close()
 
 if __name__ == '__main__':
     onosjson()

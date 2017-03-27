@@ -3,11 +3,11 @@
         "org.onosproject.millimeterwavelink": {
             "links": [
                 {
-                    "src": "of:000000000000000b/4",
-                    "dst": "of:000000000000000e/3",
+                    "src": "of:000000000000000d/3",
+                    "dst": "of:000000000000000e/4",
                     "capacity": "200",
-                    "ps": 89.56619509830323,
-                    "length": 10,
+                    "ps": 26.467404213658,
+                    "length": 15,
                     "technology": "mmwave"
                 }
             ]
