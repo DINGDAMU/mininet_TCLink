@@ -44,9 +44,9 @@ where **j** is the model parameter, **j** = l or n
         net = Mininet(topo, switch=OVSKernelSwitch, controller=RemoteController, link=TCLink)
 Set link to TCLink so that we can measure the packet loss and latency.  
 
-        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss(20), use_htb=True)  
-        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss(10), use_htb=True)  
-        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss(15), use_htb=True) 
+        self.addLink(s10, h1, bw=20, delay='5ms', loss=formula.p_loss(10), use_htb=True)  
+        self.addLink(s12, h2, bw=30, delay='5ms', loss=formula.p_loss(8), use_htb=True)  
+        self.addLink(s11, h3, bw=10, delay='10ms', loss=formula.p_loss(6), use_htb=True) 
 **bw** = link bandwidth  
 **delay** = packet delay time  
 **loss** = packet loss rate   
@@ -58,7 +58,10 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
         p_loss(d) = (1-Ps(d))*100 
         
 **p_loss** must be an integer from 0 to 100  
-**d** is the separating distance between transmitter-receiver pair(m)
+**d** is the separating distance between transmitter-receiver pair(m), and it's called **link length** in our case.  
+The long distance leads the high packet loss, which may cause the link to be indirectional.  
+For this reason, it's highly recommended to set the distance lower than 15m, otherwise the link will not work.
+
 
 # A json example:  
     {
@@ -67,10 +70,10 @@ The **hierarchical token bucket (HTB)** is a faster replacement for the class-ba
       "links" : [{
         "src":"of:000000000000000e/5",
         "dst":"of:000000000000000f/3",
-        "length": "100",
+        "length": formula.d,
         "capacity":"100",
         "technology":"mmwave",
-        "ps": 100-p_loss(10)
+        "ps": 100-p_loss(d)
       }]
     },
     "org.onosproject.millimeterwaveport" : {
