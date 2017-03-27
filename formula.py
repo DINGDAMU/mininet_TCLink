@@ -14,7 +14,7 @@ import json
 pl_model = '28'
 d1 = 10    # the separating distance between transmitter-receiver pair(m)
 d2 = 12
-d3 = 15
+d3 = 8
 if cmp(pl_model, '28') == 0:
     alpha = 72.0   # dB
     beta = 2.92
