@@ -4,10 +4,23 @@
             "links": [
                 {
                     "src": "of:000000000000000b/4",
-                    "capacity": "200",
-                    "ps": 89.56619509830323,
                     "dst": "of:000000000000000e/3",
-                    "length": 10,
+                    "capacity": "200",
+                    "length": 10.0,
+                    "technology": "mmwave"
+                },
+                {
+                    "src": "of:000000000000000d/4",
+                    "dst": "of:000000000000000f/4",
+                    "capacity": "200",
+                    "length": 12.0,
+                    "technology": "mmwave"
+                },
+                {
+                    "src": "of:000000000000000d/3",
+                    "dst": "of:000000000000000e/4",
+                    "capacity": "200",
+                    "length": 8.0,
                     "technology": "mmwave"
                 }
             ]

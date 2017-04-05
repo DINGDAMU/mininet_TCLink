@@ -12,9 +12,9 @@ import math
 import json
 
 pl_model = '28'
-d1 = 10    # the separating distance between transmitter-receiver pair(m)
-d2 = 12
-d3 = 8
+d1 = 10.0    # the separating distance between transmitter-receiver pair(m)
+d2 = 12.0
+d3 = 8.0
 if cmp(pl_model, '28') == 0:
     alpha = 72.0   # dB
     beta = 2.92
@@ -169,53 +169,31 @@ annotation = {
                         "length": d1,
                         "capacity": "200",
                         "technology": "mmwave",
-                        "ps": 100 - p_loss(d1)
-                        }]
-                    }
-                }
-            }
-
-annotation2 = {
-            "apps": {
-                "org.onosproject.millimeterwavelink": {
-                    "links": [{
+                        },
+                        {
                         "src": "of:000000000000000d/4",
                         "dst": "of:000000000000000f/4",
                         "length": d2,
                         "capacity": "200",
                         "technology": "mmwave",
-                        "ps": 100 - p_loss(d2)
-                        }]
-                    }
-                }
-            }
-
-annotation3 = {
-            "apps": {
-                "org.onosproject.millimeterwavelink": {
-                    "links": [{
+                        },
+                        {
                         "src": "of:000000000000000d/3",
                         "dst": "of:000000000000000e/4",
                         "length": d3,
                         "capacity": "200",
                         "technology": "mmwave",
-                        "ps": 100 - p_loss(d3)
-                        }]
+                        }
+                    ]
                     }
                 }
             }
 
 
 def onosjson():
-    fp1 = open("cfg.json", "w")
-    fp1.write(json.dumps(annotation, indent=4, separators=(',', ': ')))
-    fp1.close()
-    fp2 = open("cfg2.json", "w")
-    fp2.write(json.dumps(annotation2,indent=4, separators=(',', ': ')))
-    fp2.close()
-    fp3 = open("cfg3.json", "w")
-    fp3.write(json.dumps(annotation3,indent=4, separators=(',', ': ')))
-    fp3.close()
+    fp = open("cfg.json", "w")
+    fp.write(json.dumps(annotation, indent=4, separators=(',', ': ')))
+    fp.close()
 
 if __name__ == '__main__':
     onosjson()
