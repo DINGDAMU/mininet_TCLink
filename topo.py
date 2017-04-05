@@ -13,19 +13,19 @@ class SingleSwitchTopo(Topo):
         # Initialize topology and default options
         Topo.__init__(self, **opts)
 
-        s10 = self.addSwitch('s10', dpid='000000000000000a',
+        s10 = self.addSwitch('s10', dpid=formula.s10_id,
                              protocols='OpenFlow13')
-        s11 = self.addSwitch('s11', dpid='000000000000000b',
+        s11 = self.addSwitch('s11', dpid=formula.s11_id,
                              protocols='OpenFlow13')
-        s12 = self.addSwitch('s12', dpid='000000000000000c',
+        s12 = self.addSwitch('s12', dpid=formula.s12_id,
                              protocols='OpenFlow13')
-        s13 = self.addSwitch('s13', dpid='000000000000000d',
+        s13 = self.addSwitch('s13', dpid=formula.s13_id,
                              protocols='OpenFlow13')
-        s14 = self.addSwitch('s14', dpid='000000000000000e',
+        s14 = self.addSwitch('s14', dpid=formula.s14_id,
                              protocols='OpenFlow13')
-        s15 = self.addSwitch('s15', dpid='000000000000000f',
+        s15 = self.addSwitch('s15', dpid=formula.s15_id,
                              protocols='OpenFlow13')
-        s16 = self.addSwitch('s16', dpid='000000000000001a',
+        s16 = self.addSwitch('s16', dpid=formula.s16_id,
                              protocols='OpenFlow13')
 
         h1 = self.addHost('h1', ip='10.0.0.1', mac='000000000001')

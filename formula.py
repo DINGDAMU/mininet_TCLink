@@ -160,26 +160,41 @@ def p_loss(d):
     return (1-float(ps(d)))*100
 
 
+s10_id = '000000000000000a'
+s11_id = '000000000000000b'
+s12_id = '000000000000000c'
+s13_id = '000000000000000d'
+s14_id = '000000000000000e'
+s15_id = '000000000000000f'
+s16_id = '000000000000001a'
+
+sb_se = 4
+se_sb = 3
+sd_se = 4
+se_sd = 3
+sd_sf = 4
+sf_sd = 4
+
 annotation = {
             "apps": {
                 "org.onosproject.millimeterwavelink": {
                     "links": [{
-                        "src": "of:000000000000000b/4",
-                        "dst": "of:000000000000000e/3",
+                        "src": s11_id+"/"+str(sb_se),
+                        "dst": s14_id+"/"+str(se_sb),
                         "length": d1,
                         "capacity": "200",
                         "technology": "mmwave",
                         },
                         {
-                        "src": "of:000000000000000d/4",
-                        "dst": "of:000000000000000f/4",
+                        "src": s13_id+"/"+str(sd_sf),
+                        "dst": s15_id+"/"+str(sf_sd),
                         "length": d2,
                         "capacity": "200",
                         "technology": "mmwave",
                         },
                         {
-                        "src": "of:000000000000000d/3",
-                        "dst": "of:000000000000000e/4",
+                        "src": s13_id+"/"+str(sd_se),
+                        "dst": s14_id+"/"+str(se_sd),
                         "length": d3,
                         "capacity": "200",
                         "technology": "mmwave",
