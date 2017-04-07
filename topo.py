@@ -50,7 +50,7 @@ class SingleSwitchTopo(Topo):
         self.addLink(s13, s15, loss=formula.p_loss(formula.d2))    # sd/4-sf/4
         self.addLink(s10, s16)    # sa/4-sg/2
         self.addLink(s12, s16)    # sc/4-sg/3
-
+        self.addLink(s13, s16)    # sd/5-sg/4
 
 def simpleTest():
     "Create and test a simple network"

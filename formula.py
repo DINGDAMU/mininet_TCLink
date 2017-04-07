@@ -170,8 +170,8 @@ s16_id = '000000000000001a'
 
 sb_se = 4
 se_sb = 3
-sd_se = 4
-se_sd = 3
+sd_se = 3
+se_sd = 4
 sd_sf = 4
 sf_sd = 4
 
@@ -179,22 +179,22 @@ annotation = {
             "apps": {
                 "org.onosproject.millimeterwavelink": {
                     "links": [{
-                        "src": s11_id+"/"+str(sb_se),
-                        "dst": s14_id+"/"+str(se_sb),
+                        "src": "of:"+s11_id+"/"+str(sb_se),
+                        "dst": "of:"+s14_id+"/"+str(se_sb),
                         "length": d1,
                         "capacity": "200",
                         "technology": "mmwave",
                         },
                         {
-                        "src": s13_id+"/"+str(sd_sf),
-                        "dst": s15_id+"/"+str(sf_sd),
+                        "src": "of:"+s13_id+"/"+str(sd_sf),
+                        "dst": "of:"+s15_id+"/"+str(sf_sd),
                         "length": d2,
                         "capacity": "200",
                         "technology": "mmwave",
                         },
                         {
-                        "src": s13_id+"/"+str(sd_se),
-                        "dst": s14_id+"/"+str(se_sd),
+                        "src": "of:"+s13_id+"/"+str(sd_se),
+                        "dst": "of:"+s14_id+"/"+str(se_sd),
                         "length": d3,
                         "capacity": "200",
                         "technology": "mmwave",
