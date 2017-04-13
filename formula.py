@@ -15,6 +15,8 @@ pl_model = '28'
 d1 = 10.0    # the separating distance between transmitter-receiver pair(m)
 d2 = 12.0
 d3 = 8.0
+d4 = 9.0
+d5 = 8.5
 if cmp(pl_model, '28') == 0:
     alpha = 72.0   # dB
     beta = 2.92
@@ -174,6 +176,10 @@ sd_se = 3
 se_sd = 4
 sd_sf = 4
 sf_sd = 4
+sd_sa = 2
+sa_sd = 3
+sa_sg = 4
+sg_sa = 2
 
 annotation = {
             "apps": {
@@ -196,6 +202,20 @@ annotation = {
                         "src": "of:"+s13_id+"/"+str(sd_se),
                         "dst": "of:"+s14_id+"/"+str(se_sd),
                         "length": d3,
+                        "capacity": "200",
+                        "technology": "mmwave",
+                        },
+                        {
+                        "src": "of:"+s13_id+"/"+str(sd_sa),
+                        "dst": "of:"+s10_id+"/"+str(sa_sd),
+                        "length": d4,
+                        "capacity": "200",
+                        "technology": "mmwave",
+                        },
+                        {
+                        "src": "of:"+s10_id+"/"+str(sa_sg),
+                        "dst": "of:"+s16_id+"/"+str(sg_sa),
+                        "length": d5,
                         "capacity": "200",
                         "technology": "mmwave",
                         }

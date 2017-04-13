@@ -22,6 +22,20 @@
                     "capacity": "200",
                     "length": 8.0,
                     "technology": "mmwave"
+                },
+                {
+                    "src": "of:000000000000000d/2",
+                    "dst": "of:000000000000000a/3",
+                    "capacity": "200",
+                    "length": 9.0,
+                    "technology": "mmwave"
+                },
+                {
+                    "src": "of:000000000000000a/4",
+                    "dst": "of:000000000000001a/2",
+                    "capacity": "200",
+                    "length": 8.5,
+                    "technology": "mmwave"
                 }
             ]
         }

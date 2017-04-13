@@ -39,7 +39,7 @@ class SingleSwitchTopo(Topo):
         self.addLink(s16, h4)
 
         self.addLink(s10, s13)    # sa/2-sd/1
-        self.addLink(s10, s13)    # sa/3-sd/2
+        self.addLink(s10, s13, loss=formula.p_loss(formula.d4))    # sa/3-sd/2
         self.addLink(s11, s14)    # sb/2-se/1
         self.addLink(s11, s14)    # sb/3-se/2
         self.addLink(s11, s14, loss=formula.p_loss(formula.d1))    # sb/4-se/3
@@ -48,7 +48,7 @@ class SingleSwitchTopo(Topo):
         self.addLink(s13, s14, loss=formula.p_loss(formula.d3))    # sd/3-se/4
         self.addLink(s14, s15)    # se/5-sf/3
         self.addLink(s13, s15, loss=formula.p_loss(formula.d2))    # sd/4-sf/4
-        self.addLink(s10, s16)    # sa/4-sg/2
+        self.addLink(s10, s16, loss=formula.p_loss(formula.d5))    # sa/4-sg/2
         self.addLink(s12, s16)    # sc/4-sg/3
         self.addLink(s13, s16)    # sd/5-sg/4
 
