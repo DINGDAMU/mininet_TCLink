@@ -34,7 +34,7 @@
                     "src": "of:000000000000000a/4",
                     "dst": "of:000000000000001a/2",
                     "capacity": "200",
-                    "length": 8.5,
+                    "length": 9.5,
                     "technology": "mmwave"
                 }
             ]

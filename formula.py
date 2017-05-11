@@ -16,7 +16,7 @@ d1 = 10.0    # the separating distance between transmitter-receiver pair(m)
 d2 = 12.0
 d3 = 8.0
 d4 = 9.0
-d5 = 8.5
+d5 = 9.5
 if cmp(pl_model, '28') == 0:
     alpha = 72.0   # dB
     beta = 2.92
@@ -223,12 +223,123 @@ annotation = {
                     }
                 }
             }
+band_sa_sd = 100
+lat_sa_sd = 10
+band_sa_sd2 = 200
+lat_sa_sd2 = 8
+band_sa_sg = 300
+lat_sa_sg = 7
+band_sb_se = 150
+lat_sb_se = 8
+band_sb_se2 = 130
+lat_sb_se2 = 10
+band_sb_se3 = 120
+lat_sb_se3 = 3
+band_sc_sf = 80
+lat_sc_sf = 6
+band_sc_sf2 = 165
+lat_sc_sf2 = 8
+band_sd_se = 220
+lat_sd_se = 13
+band_se_sf = 100
+lat_se_sf = 9
+band_sd_sf = 230
+lat_sd_sf = 18
+band_sc_sg = 350
+lat_sc_sg = 22
+band_sd_sg = 170
+lat_sd_sg = 12
+
+bandwidthannotation = {
+    "links": {
+      "of:000000000000000a/2-of:000000000000000d/1": {
+        "basic": {
+            "bandwidth": band_sa_sd,
+            "latency": lat_sa_sd
+                }
+      },
+      "of:000000000000000a/3-of:000000000000000d/2": {
+        "basic": {
+          "bandwidth": band_sa_sd2,
+          "latency": lat_sa_sd2
+        }
+      },
+      "of:000000000000000a/4-of:000000000000001a/2": {
+        "basic": {
+          "bandwidth": band_sa_sg,
+          "latency": lat_sa_sg
+        }
+      },
+      "of:000000000000000b/2-of:000000000000000e/1": {
+        "basic": {
+          "bandwidth": band_sb_se,
+          "latency": lat_sb_se
+        }
+      },
+      "of:000000000000000b/3-of:000000000000000e/2": {
+        "basic": {
+          "bandwidth": band_sb_se2,
+          "latency": lat_sb_se2
+        }
+      },
+      "of:000000000000000b/4-of:000000000000000e/3": {
+        "basic": {
+          "bandwidth": band_sb_se3,
+          "latency": lat_sb_se3
+        }
+      },
+      "of:000000000000000c/2-of:000000000000000f/1": {
+        "basic": {
+          "bandwidth": band_sc_sf,
+          "latency": lat_sc_sf
+        }
+      },
+      "of:000000000000000d/3-of:000000000000000e/4": {
+        "basic": {
+          "bandwidth": band_sd_se,
+          "latency": lat_sd_se
+        }
+      },
+      "of:000000000000000f/3-of:000000000000000e/5": {
+        "basic": {
+          "bandwidth": band_se_sf,
+          "latency": lat_se_sf
+        }
+      },
+      "of:000000000000001a/4-of:000000000000000d/5": {
+        "basic": {
+          "bandwidth": band_sd_sg,
+          "latency": lat_sd_sg
+        }
+      },
+      "of:000000000000000d/4-of:000000000000000f/4": {
+        "basic": {
+          "bandwidth": band_sd_sf,
+          "latency": lat_sd_sf
+        }
+      },
+      "of:000000000000001a/3-of:000000000000000c/4": {
+        "basic": {
+          "bandwidth": band_sc_sg,
+          "latency": lat_sc_sg
+        }
+      },
+      "of:000000000000000f/2-of:000000000000000c/3": {
+        "basic": {
+          "bandwidth": band_sc_sf2,
+          "latency": lat_sc_sf2
+        }
+      }
+    }
+   }
 
 
 def onosjson():
     fp = open("cfg.json", "w")
     fp.write(json.dumps(annotation, indent=4, separators=(',', ': ')))
     fp.close()
-
+    fp1 = open("cfgb.json", "w")
+    fp1.write(json.dumps(bandwidthannotation, indent=4, separators=(',', ':')))
+    fp1.close()
 if __name__ == '__main__':
     onosjson()

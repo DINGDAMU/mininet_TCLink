@@ -38,19 +38,40 @@ class SingleSwitchTopo(Topo):
         self.addLink(s11, h3)
         self.addLink(s16, h4)
 
-        self.addLink(s10, s13)    # sa/2-sd/1
-        self.addLink(s10, s13, loss=formula.p_loss(formula.d4))    # sa/3-sd/2
-        self.addLink(s11, s14)    # sb/2-se/1
-        self.addLink(s11, s14)    # sb/3-se/2
-        self.addLink(s11, s14, loss=formula.p_loss(formula.d1))    # sb/4-se/3
-        self.addLink(s12, s15)    # sc/2-sf/1
-        self.addLink(s12, s15)    # sc/3-sf/3
-        self.addLink(s13, s14, loss=formula.p_loss(formula.d3))    # sd/3-se/4
-        self.addLink(s14, s15)    # se/5-sf/3
-        self.addLink(s13, s15, loss=formula.p_loss(formula.d2))    # sd/4-sf/4
-        self.addLink(s10, s16, loss=formula.p_loss(formula.d5))    # sa/4-sg/2
-        self.addLink(s12, s16)    # sc/4-sg/3
-        self.addLink(s13, s16)    # sd/5-sg/4
+        self.addLink(s10, s13, bw=formula.band_sa_sd,
+                     delay=str(formula.lat_sa_sd) + "ms")    # sa/2-sd/1
+        self.addLink(s10, s13, loss=formula.p_loss(formula.d4),
+                     bw=formula.band_sa_sd2,
+                     delay=str(formula.lat_sa_sd2) + "ms")    # sa/3-sd/2
+        self.addLink(s11, s14, bw=formula.band_sb_se,
+                     delay=str(formula.lat_sb_se) + "ms")    # sb/2-se/1
+        self.addLink(s11, s14, bw=formula.band_sb_se2,
+                     delay=str(formula.lat_sb_se2) + "ms")    # sb/3-se/2
+        self.addLink(s11, s14, loss=formula.p_loss(formula.d1),
+                     bw=formula.band_sb_se3,
+                     delay=str(formula.lat_sb_se3) + "ms")    # sb/4-se/3
+        self.addLink(s12, s15,
+                     bw=formula.band_sc_sf,
+                     delay=str(formula.lat_sc_sf) + "ms")    # sc/2-sf/1
+        self.addLink(s12, s15,
+                     bw=formula.band_sc_sf2,
+                     delay=str(formula.lat_sc_sf2) + "ms")    # sc/3-sf/3
+        self.addLink(s13, s14, loss=formula.p_loss(formula.d3),
+                     bw=formula.band_sd_se,
+                     delay=str(formula.lat_sd_se) + "ms")    # sd/3-se/4
+        self.addLink(s14, s15, bw=formula.band_se_sf,
+                     delay=str(formula.lat_se_sf) + "ms")    # se/5-sf/3
+        self.addLink(s13, s15, loss=formula.p_loss(formula.d2),
+                     bw=formula.band_sd_sf,
+                     delay=str(formula.lat_sd_sf) + "ms")    # sd/4-sf/4
+        self.addLink(s10, s16, loss=formula.p_loss(formula.d5),
+                     bw=formula.band_sa_sg,
+                     delay=str(formula.lat_sa_sg) + "ms")    # sa/4-sg/2
+        self.addLink(s12, s16, bw=formula.band_sc_sg,
+                     delay=str(formula.lat_sc_sg) + "ms")    # sc/4-sg/3
+        self.addLink(s13, s16, bw=formula.band_sd_sg,
+                     delay=str(formula.lat_sd_sg) + "ms")    # sd/5-sg/4
+
 
 def simpleTest():
     "Create and test a simple network"
